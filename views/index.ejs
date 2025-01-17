@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postcode Info</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <h1>UK Postcode Lookup</h1>
+        <div class="form-container">
+            <form action="/get-single-info" method="POST">
+                <label for="postcode">Enter Postcode</label>
+                <div class="input-group">
+                    <input type="text" id="postcode" name="postcode" placeholder="e.g., N22 6PB" required>
+                    <button type="submit">Lookup</button>
+                </div>
+            </form>
+        </div>
+        <div class="info-box">
+            <h3>Postcode Information<%= locals.locationData?.postcode ? ' for ' + locals.locationData.postcode : '' %></h3>
+            <div class="info-grid">
+                <p><span>Longitude:</span> <%= locals.locationData?.longitude || 'N/A' %></p>
+                <p><span>Latitude:</span> <%= locals.locationData?.latitude || 'N/A' %></p>
+                <p><span>Eastings:</span> <%= locals.locationData?.eastings || 'N/A' %></p>
+                <p><span>Northings:</span> <%= locals.locationData?.northings || 'N/A' %></p>
+                <p><span>Country:</span> <%= locals.locationData?.country || 'N/A' %></p>
+                <p><span>Region:</span> <%= locals.locationData?.region || 'N/A' %></p>
+                <p><span>Admin District:</span> <%= locals.locationData?.admin_district || 'N/A' %></p>
+                <p><span>Admin Ward:</span> <%= locals.locationData?.admin_ward || 'N/A' %></p>
+
+                <p><span>Parliamentary Constituency 2024:</span> <%= locals.locationData?.parliamentary_constituency_2024 || 'N/A' %></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
