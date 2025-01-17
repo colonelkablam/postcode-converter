@@ -11,22 +11,29 @@ body {
     min-height: 100vh;
 }
 
-/* Wrapper */
-.wrapper {
-    width: 90%;
-    max-width: 800px;
-    background-color: #1e2a38;
-    border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    padding: 30px;
-    text-align: center;
-}
-
 /* Header */
 h1 {
     font-size: 32px;
     margin-bottom: 20px;
     color: #e91e63; /* Vibrant Pink */
+}
+
+/* Main Layout */
+.main-container {
+    display: flex;
+    gap: 20px;
+    width: 90%;
+    max-width: 1200px;
+}
+
+/* Wrapper */
+.wrapper {
+    flex: 1;
+    background-color: #1e2a38;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    text-align: left; /* Left-justify content */
 }
 
 /* Form Container */
@@ -37,14 +44,13 @@ h1 {
 .form-container label {
     font-size: 18px;
     font-weight: bold;
-    color: #ffffff;
+    color: #00e5ff; /* Vibrant blue for labels */
     margin-bottom: 10px;
     display: block;
 }
 
 .input-group {
     display: flex;
-    justify-content: center;
     align-items: center;
     gap: 10px;
 }
@@ -61,7 +67,7 @@ input[type="text"] {
 
 input[type="text"]:focus {
     outline: none;
-    border-color: #00e5ff; /* Cyan Highlight */
+    border-color: #e67da0; /* Cyan Highlight */
 }
 
 button {
@@ -77,7 +83,7 @@ button {
 }
 
 button:hover {
-    background-color: #e91e63;
+    background-color: #1a73e8;
     color: #ffffff;
 }
 
@@ -86,19 +92,18 @@ button:hover {
     background-color: #283048;
     border-radius: 10px;
     padding: 20px;
-    text-align: left;
+    text-align: left; /* Ensure left alignment */
 }
 
 .info-box h3 {
     font-size: 24px;
-    color: #00e5ff;
-    margin-bottom: 20px;
-    text-align: center;
+    color: #00e5ff; /* Vibrant cyan */
+    margin: 0 0 20px 0;
 }
 
 .info-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /* Two-column layout for labels and values */
     gap: 15px;
 }
 
@@ -108,18 +113,45 @@ button:hover {
     color: #ffffff;
 }
 
+.info-grid p .full-width {
+    font-size: 16px;
+    color: #ffffff;
+}
+
 .info-grid span {
     font-weight: bold;
-    color: #e91e63; /* Highlight Key Labels */
+    color: #1a73e8; /* Highlight labels with vibrant blue */
+}
+
+.info-grid .full-width {
+    grid-column: span 2; /* Make this item span two columns */
+    text-align: left; /* Ensure text alignment remains left-justified */
+}
+
+.info-grid .full-width span {
+    display: block; /* Place the value on the next line */
+}
+
+/* Map Container */
+#map {
+    flex: 1;
+    height: 600px;
+    background-color: #1e2a38; /* Fallback in case the map doesn't load */
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    input[type="text"] {
-        width: 100%;
+    .main-container {
+        flex-direction: column;
+    }
+
+    #map {
+        height: 400px;
     }
 
     .info-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Single-column layout for smaller screens */
     }
 }
