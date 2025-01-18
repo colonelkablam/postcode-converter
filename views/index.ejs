@@ -21,36 +21,9 @@
                     </div>
                 </form>
             </div>
-            <div class="info-box">
-                <% if (!locals.error) { %> 
-                    <h3>
-                        Postcode Information
-                        <% if (locals.locationData?.postcode) { %>
-                            for <span class="highlighted"><%= locals.locationData.postcode %></span>
-                        <% } %>
-                    </h3>
-                                    <div class="info-grid">
-                    <p><span>Longitude:</span> <%= locals.locationData?.longitude || 'N/A' %></p>
-                    <p><span>Latitude:</span> <%= locals.locationData?.latitude || 'N/A' %></p>
-                    <p><span>Eastings:</span> <%= locals.locationData?.eastings || 'N/A' %></p>
-                    <p><span>Northings:</span> <%= locals.locationData?.northings || 'N/A' %></p>
-                    <p><span>Country:</span> <%= locals.locationData?.country || 'N/A' %></p>
-                    <p><span>Region:</span> <%= locals.locationData?.region || 'N/A' %></p>
-                    <p><span>Admin District:</span> <%= locals.locationData?.admin_district || 'N/A' %></p>
-                    <p><span>Admin Ward:</span> <%= locals.locationData?.admin_ward || 'N/A' %></p>
-                    <p class="full-width">
-                        <span>Parliamentary Constituency 2024:</span>
-                        <%= locals.locationData?.parliamentary_constituency_2024 || 'N/A' %>
-                    </p>
-                </div>
-                <% } else { %>
-                    <h3>Unable to retrieve data</h3>
-                    <div class="info-grid">
-                        <p><span>Message:</span> <%= locals.error || 'N/A' %></p>                  
-                    </div>
-                <% } %>
 
-            </div>
+            <%- include("partials/info-box.ejs", locals.locationdata) %>
+            
             <div class="form-container" id="random-button">
                 <form action="/get-random-info" method="POST">
                     <div class="input-group">
