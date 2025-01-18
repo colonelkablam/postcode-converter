@@ -5,6 +5,8 @@ import axios from "axios";
 const app = express();
 const port = 3000;
 const baseURL = "https://api.postcodes.io/postcodes";
+const randomURL = "https://api.postcodes.io/random/postcodes";
+
 
 
 // MIDDLEWARE
@@ -21,7 +23,7 @@ app.get("/", (req, res) => {
 // single postcode submission route
 app.post("/get-single-info", async (req, res) => {
 try {
-    const response = await axios.get(`${baseURL}/${req.body.postcode}`)
+    const response = await axios.get(`${baseURL}/${req.body.postcode}`);
     res.render("index.ejs", {
         locationData: response.data.result, 
     }
@@ -32,6 +34,21 @@ try {
     });
 }
 })
+
+// single postcode submission route
+app.post("/get-random-info", async (req, res) => {
+    try {
+        const response = await axios.get(randomURL);
+        res.render("index.ejs", {
+            locationData: response.data.result, 
+        }
+        );
+    } catch (error) {
+        res.render("index.ejs", {
+            error: error.message, 
+        });
+    }
+    })
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}.`);

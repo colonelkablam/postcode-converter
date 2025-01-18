@@ -23,8 +23,13 @@
             </div>
             <div class="info-box">
                 <% if (!locals.error) { %> 
-                <h3>Postcode Information<%= locals.locationData?.postcode ? ' for ' + locals.locationData.postcode : '' %></h3>
-                <div class="info-grid">
+                    <h3>
+                        Postcode Information
+                        <% if (locals.locationData?.postcode) { %>
+                            for <span class="highlighted"><%= locals.locationData.postcode %></span>
+                        <% } %>
+                    </h3>
+                                    <div class="info-grid">
                     <p><span>Longitude:</span> <%= locals.locationData?.longitude || 'N/A' %></p>
                     <p><span>Latitude:</span> <%= locals.locationData?.latitude || 'N/A' %></p>
                     <p><span>Eastings:</span> <%= locals.locationData?.eastings || 'N/A' %></p>
@@ -45,6 +50,13 @@
                     </div>
                 <% } %>
 
+            </div>
+            <div class="form-container" id="random-button">
+                <form action="/get-random-info" method="POST">
+                    <div class="input-group">
+                        <button type="submit">Get Random Postcode</button>
+                    </div>
+                </form>
             </div>
         </div>
         <div id="map"></div>

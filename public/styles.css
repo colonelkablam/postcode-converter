@@ -41,6 +41,10 @@ h1 {
     margin-bottom: 30px;
 }
 
+#random-button{
+    margin: 30px 0 0 0 !important;
+}
+
 .form-container label {
     font-size: 18px;
     font-weight: bold;
@@ -99,6 +103,10 @@ button:hover {
     font-size: 24px;
     color: #00e5ff; /* Vibrant cyan */
     margin: 0 0 20px 0;
+}
+
+.highlighted {
+    color: #e91e63; /* Vibrant cyan */
 }
 
 .info-grid {
